@@ -4,7 +4,7 @@
 ## Assignment 1
 
 #import required packages
-
+library(dplyr)
 
 # 1. Search for 1/2 and 2/2 of 2007 to create a shorter file
 # Keep headers as needed
