@@ -9,7 +9,7 @@ library(dplyr)
 # 1. Search for 1/2 and 2/2 of 2007 to create a shorter file
 # Keep headers as needed
 write("Date;Time;Global_active_power;Global_reactive_power;Voltage;Global_intensity;Sub_metering_1;Sub_metering_2;Sub_metering_3", 
-    "shorter.csv")
+      "shorter.csv")
 
 # Filter in a variable to debug if needed
 shorter <- grep('^[12]{1}/2/2007.*', 
@@ -27,9 +27,9 @@ powerConsumption <- read.csv("shorter.csv",
 
 # Convert columns to required types
 powerConsumption <- mutate(powerConsumption, 
-       Date = as.Date(Date, "%d/%m/%Y"), 
-       TimeStr = paste(powerConsumption$Date, powerConsumption$Time), 
-       TimeFull = strftime(TimeStr, format="%d/%m/%Y %H:%M:%S"))
+                           Date = as.Date(Date, "%d/%m/%Y"), 
+                           TimeStr = paste(powerConsumption$Date, powerConsumption$Time))
+powerConsumption$TimeFull <- strftime(paste(powerConsumption$Date, powerConsumption$Time))
 
 # Draw the plot
 png("plot1.png", width = 480, height = 480, units = "px")
